@@ -3,6 +3,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* font-family: "Montserrat", sans-serif; */
+  font-family: "Montserrat", sans-serif;
   scroll-behavior: smooth;
+}
+a{
+  color: gold;
+  text-decoration: none;
 }

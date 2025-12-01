@@ -16,11 +16,14 @@
     "@mui/material": "^7.3.5",
     "@mui/styles": "^6.5.0",
     "@reduxjs/toolkit": "^2.11.0",
+    "axios": "^1.13.2",
     "react": "^19.2.0",
+    "react-alice-carousel": "^2.9.1",
     "react-dom": "^19.2.0",
     "react-redux": "^9.2.0",
     "react-router": "^7.9.6",
-    "react-router-dom": "^7.9.6"
+    "react-router-dom": "^7.9.6",
+    "vanilla-swipe": "^2.4.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

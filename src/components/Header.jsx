@@ -11,7 +11,7 @@ import {
 import { makeStyles } from "@mui/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import {changeCurrency} from '../store/slices/currencySlice'
+import { setCurrency } from "../store/slices/currencySlice";
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -27,8 +27,7 @@ function Header() {
   // const [input, setInput] = useState("PKR");
   const currency = useSelector((state) => state.currency.currency);
   const dispatch = useDispatch();
-  currency&& console.log(currency);
-  
+  currency && console.log(currency);
 
   const darkTheme = createTheme({
     palette: {
@@ -56,7 +55,7 @@ function Header() {
               </Typography>
               <Select
                 value={currency}
-                onChange={(e) => dispatch(changeCurrency(e.target.value))}
+                onChange={(e) => dispatch(setCurrency(e.target.value))}
                 variant="outlined"
                 sx={{
                   width: 100,

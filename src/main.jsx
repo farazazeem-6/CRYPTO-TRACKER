@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import Layout from "./Layout/Layout.jsx";
-import Banner from "./Pages/Banner.jsx";
+import HomePage from "./Pages/HomePage.jsx";
 import Coin from "./Pages/Coin.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -14,7 +14,7 @@ const appRoute = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Banner />,
+        element: <HomePage />,
       },
       {
         path: "/coin/:id",

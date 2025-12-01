@@ -1,16 +1,118 @@
-# React + Vite
+# 🚀 Crypto Tracker App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and powerful crypto tracking application where users can:
 
-Currently, two official plugins are available:
+* 🔍 Search cryptocurrencies in real-time
+* 📈 View top trending coins
+* 💹 Check live prices and market stats
+* 📊 See historical price charts (All time, 1 year, 1 month, 1 week, 24 hours)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 📦 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🔥 Trending Coins
 
-## Expanding the ESLint configuration
+* Get a list of top trending coins fetched from a crypto API.
+* Shows coin name, logo, rank, and price.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 💰 Live Market Data
+
+* Live price updates.
+* Market cap, volume, 24h high/low, and price change.
+
+### 📊 Interactive Charts
+
+* Users can explore historical crypto prices.
+* Timeframes include: **All**, **1Y**, **6M**, **3M**, **1M**, **1W**, **24H**.
+* Smooth charts for better visualization.
+
+### 🔍 Search Functionality
+
+* Search any coin by name or ticker.
+* Instant filtering.
+
+---
+
+## 🛠️ Tech Stack
+
+* **Frontend:** React.js
+* **Styling:** Tailwind CSS / CSS
+* **Chart Library:** Chart.js or Recharts
+* **API:** CoinGecko (or any crypto API you prefer)
+
+---
+
+## 📂 Folder Structure
+
+```
+root
+│── src
+│   ├── components   # Reusable UI components
+│   ├── pages        # App screens/pages
+│   ├── hooks        # Custom hooks for fetching data
+│   ├── assets       # Images/icons
+│   └── utils        # Helper functions
+│
+└── public
+```
+
+---
+
+## ⚙️ Setup and Installation
+
+1. Clone the repo:
+
+```bash
+git clone your-repo-url
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Start the project:
+
+```bash
+npm start
+```
+
+---
+
+## 🔗 API Configuration
+
+Create an `.env` file and add your API endpoint or key:
+
+```
+REACT_APP_CRYPTO_API=https://api.coingecko.com/api/v3
+```
+
+---
+
+## 📈 Screenshots (optional)
+
+*Add your screenshots here*
+
+---
+
+## 🧾 License
+
+This project is free to use for learning and personal development.
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! If you have ideas, feel free to improve the project.
+
+---
+
+## 🙌 Author
+
+**Faraz** — Frontend Developer & Learner
+
+---
+
+Happy coding! 🚀

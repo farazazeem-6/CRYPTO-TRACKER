@@ -18,6 +18,7 @@ const useStyles = makeStyles(() => ({
     color: "gold",
     flex: 1,
     cursor: "pointer",
+    fontSize: "26px",
   },
 }));
 

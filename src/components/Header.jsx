@@ -27,14 +27,13 @@ function Header() {
   // const [input, setInput] = useState("PKR");
   const currency = useSelector((state) => state.currency.currency);
   const dispatch = useDispatch();
-  currency && console.log(currency);
 
   const darkTheme = createTheme({
     palette: {
+      mode: "dark",
       primary: {
         main: "#fff",
       },
-      type: "dark",
     },
   });
   return (
@@ -62,19 +61,6 @@ function Header() {
                   height: 40,
                   ml: 2,
                   color: "white",
-                  borderColor: "white",
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "white",
-                  },
-                  "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "white",
-                  },
-                  "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "white",
-                  },
-                  "& .MuiSvgIcon-root": {
-                    color: "white",
-                  },
                 }}
               >
                 <MenuItem value={"USD"}>USD</MenuItem>

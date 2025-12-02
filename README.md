@@ -76,26 +76,11 @@ npm install
 3. Start the project:
 
 ```bash
-npm start
+npm run dev
 ```
 
 ---
 
-## 🔗 API Configuration
-
-Create an `.env` file and add your API endpoint or key:
-
-```
-REACT_APP_CRYPTO_API=https://api.coingecko.com/api/v3
-```
-
----
-
-## 📈 Screenshots (optional)
-
-*Add your screenshots here*
-
----
 
 ## 🧾 License
 

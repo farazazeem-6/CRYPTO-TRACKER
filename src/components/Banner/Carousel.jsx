@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import "react-alice-carousel/lib/alice-carousel.css";
 import AliceCarousel from "react-alice-carousel";
 import { Link } from "react-router-dom";
-import { addCommas } from "../../constants/helperFunction";
+import { addCommas } from "../../utils/helperFunction";
 
 const useStyles = makeStyles(() => ({
   carousel: {
@@ -25,9 +25,9 @@ function Carousel() {
   const trendingCoins = useSelector(
     (state) => state.trendingCoins.trendingCoins
   );
+
   //calling the trending coin fetching hook
   useFetchTrendingCoins(currentCurrency);
-  trendingCoins ? console.log(trendingCoins) : null;
 
   const classes = useStyles();
   const responsive = {
@@ -64,11 +64,11 @@ function Carousel() {
             <span
               style={{
                 color: profit ? "rgb(14,203,129)" : "red",
-                fontWeight: 500,
+                fontWeight: 600,
               }}
             >
               {profit && "+"}
-              {coin.price_change_percentage_24h.toFixed(2)}
+              {coin.price_change_percentage_24h.toFixed(2)}%
             </span>
           </div>
           <span

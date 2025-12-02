@@ -2,10 +2,11 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import Layout from "./Layout/Layout.jsx";
 import HomePage from "./Pages/HomePage.jsx";
-import Coin from "./Pages/Coin.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import appStore from "./store/store.js";
+import CoinPage from "./Pages/CoinPage.jsx";
+import { createTheme, ThemeProvider } from "@mui/material";
 
 const appRoute = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const appRoute = createBrowserRouter([
       },
       {
         path: "/coin/:id",
-        element: <Coin />,
+        element: <CoinPage />,
       },
     ],
   },

@@ -3,41 +3,8 @@ import { useSelector } from "react-redux";
 import { addCommas } from "../utils/helperFunction";
 import { useParams } from "react-router-dom";
 import CoinInfo from "../components/CoinInfo";
-import { LinearProgress, Typography } from "@mui/material";
-import "../styles/CoinPage.css";
-
-const styles = {
-  container: {
-    display: "flex",
-  },
-  sidebar: {
-    width: "30%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    marginTop: 25,
-    borderRight: "2px solid grey",
-  },
-  heading: {
-    fontWeight: "bold",
-    marginBottom: 20,
-    fontFamily: "Montserrat",
-  },
-  description: {
-    width: "100%",
-    fontFamily: "Montserrat",
-    padding: 25,
-    paddingBottom: 15,
-    paddingTop: 0,
-    textAlign: "justify",
-  },
-  marketData: {
-    alignSelf: "start",
-    padding: 25,
-    paddingTop: 10,
-    width: "100%",
-  },
-};
+import { LinearProgress } from "@mui/material";
+import styles from "../styles/CoinPage.module.css";
 
 const CoinPage = () => {
   const { id } = useParams();
@@ -50,24 +17,30 @@ const CoinPage = () => {
   if (!coinData) return <LinearProgress style={{ backgroundColor: "gold" }} />;
 
   return (
-    <div className="coin-page-container">
-      <div className="coin-sidebar">
-        <div className="upper-section">
-        <img src={coinData?.image?.large} alt={coinData?.name} />
-        <h4 className="coin-heading">{coinData?.name}</h4>
-        <p>{coinData?.description?.en.split(". ")[0]}.</p>
+    <div className={styles.coinPageContainer}>
+      <div className={styles.coinSidebar}>
+        <div className={styles.upperSection}>
+          <img
+            className={styles.imgStyle}
+            src={coinData?.image?.large}
+            alt={coinData?.name}
+          />
+          <h4 className={styles.coinHeading}>{coinData?.name}</h4>
+          <p className={styles.description}>
+            {coinData?.description?.en.split(". ")[0]}.
+          </p>
         </div>
-        <div className="market-data">
+        <div className={styles.marketData}>
           <span>
-            <h5>Rank:</h5>
+            <h5 className={styles.heading5}>Rank:</h5>
             &nbsp; &nbsp;
-            <h6>{coinData?.market_cap_rank}</h6>
+            <h6 className={styles.heading6}>{coinData?.market_cap_rank}</h6>
           </span>
 
           <span>
-            <h5>Current Price:</h5>
+            <h5 className={styles.heading5}>Current Price:</h5>
             &nbsp; &nbsp;
-            <h6>
+            <h6 className={styles.heading6}>
               {currentSymbol}{" "}
               {addCommas(
                 coinData?.market_data?.current_price[
@@ -78,9 +51,9 @@ const CoinPage = () => {
           </span>
 
           <span>
-            <h5>Market Cap:</h5>
+            <h5 className={styles.heading5}>Market Cap:</h5>
             &nbsp; &nbsp;
-            <h6>
+            <h6 className={styles.heading6}>
               {currentSymbol}{" "}
               {addCommas(
                 Math.floor(
@@ -94,7 +67,7 @@ const CoinPage = () => {
           </span>
         </div>
       </div>
-      <CoinInfo coin={coinData} />
+      <CoinInfo coin={coinData.id} />
     </div>
   );
 };

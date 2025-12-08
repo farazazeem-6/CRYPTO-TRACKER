@@ -14,6 +14,7 @@ import {
   TextField,
   ThemeProvider,
   Typography,
+  Box,
 } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -28,7 +29,6 @@ const useStyles = makeStyles(() => ({
       backgroundColor: "#131111",
     },
   },
-
   pagination: {
     "& .MuiPaginationItem-root": {
       color: "gold",
@@ -43,9 +43,7 @@ function CoinsTabel() {
   const allCoins = useSelector((state) => state.allCoins.allCoins);
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
-
   const [search, setSearch] = useState("");
-  // console.log("Loading: " + loading + " Error: " + error);
 
   const darkTheme = createTheme({
     palette: {
@@ -55,6 +53,7 @@ function CoinsTabel() {
       },
     },
   });
+
   const handleSearch = () => {
     return allCoins.filter(
       (coin) =>
@@ -64,47 +63,81 @@ function CoinsTabel() {
   };
 
   const classes = useStyles();
+
   return (
     <ThemeProvider theme={darkTheme}>
-      <Container style={{ textAlign: "center" }}>
+      <Container sx={{ textAlign: "center" }}>
         <Typography
           variant="h4"
-          style={{ margin: "18px", fontFamily: "Montserrat, sans-serif" }}
+          sx={{
+            margin: { xs: "12px", sm: "18px" },
+            fontFamily: "Montserrat, sans-serif",
+            fontSize: { xs: "1.25rem", sm: "1.75rem", md: "2.125rem" }, // Smaller on mobile
+          }}
         >
           Cryptocurrency Prices by Market Cap
         </Typography>
+
         <TextField
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           label="Search For a Crypto Currency.."
           variant="outlined"
-          style={{ marginBottom: 20, width: "100%", borderColor: "white" }}
+          sx={{
+            marginBottom: 2,
+            width: "100%",
+            "& .MuiOutlinedInput-root": {
+              fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1rem" }, // Smaller on mobile
+            },
+            "& .MuiInputLabel-root": {
+              fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1rem" }, // Smaller label
+            },
+          }}
         />
 
-        <TableContainer>
+        <TableContainer
+          sx={{
+            "&::-webkit-scrollbar": {
+              height: "8px",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "gold",
+              borderRadius: "4px",
+            },
+          }}
+        >
           {loading ? (
             <LinearProgress style={{ backgroundColor: "gold" }} />
           ) : (
-            <Table>
+            <Table
+              sx={{
+                minWidth: { xs: 300, sm: 500, md: 650 },
+              }}
+            >
               <TableHead style={{ backgroundColor: "#EEBC1D" }}>
                 <TableRow>
-                  {["Coin", "Price", "24h Change", "Market Cap"].map((head) => {
-                    return (
-                      <TableCell
-                        style={{
-                          color: "black",
-                          fontWeight: 700,
-                          fontFamily: "Montserrat, sans-serif",
-                        }}
-                        key={head}
-                        align={head === "Coin" ? "" : "right"}
-                      >
-                        {head}
-                      </TableCell>
-                    );
-                  })}
+                  {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
+                    <TableCell
+                      sx={{
+                        color: "black",
+                        fontWeight: 700,
+                        fontFamily: "Montserrat, sans-serif",
+                        fontSize: { xs: "0.65rem", sm: "0.8rem", md: "1rem" }, // Much smaller on mobile
+                        padding: { xs: "6px 4px", sm: "10px 12px", md: "16px" }, // Tighter padding
+                        display:
+                          head === "Market Cap"
+                            ? { xs: "none", sm: "table-cell" }
+                            : "table-cell",
+                      }}
+                      key={head}
+                      align={head === "Coin" ? "left" : "right"}
+                    >
+                      {head}
+                    </TableCell>
+                  ))}
                 </TableRow>
               </TableHead>
+
               <TableBody>
                 {handleSearch()
                   .slice((page - 1) * 10, (page - 1) * 10 + 10)
@@ -116,75 +149,147 @@ function CoinsTabel() {
                         className={classes.row}
                         key={row.name}
                       >
+                        {/* Coin Cell */}
                         <TableCell
-                          component={"th"}
+                          component="th"
                           scope="row"
-                          style={{
+                          sx={{
                             verticalAlign: "middle",
+                            padding: {
+                              xs: "6px 4px",
+                              sm: "10px 12px",
+                              md: "16px",
+                            },
                           }}
                         >
-                          <div
-                            style={{
+                          <Box
+                            sx={{
                               display: "flex",
-                              gap: 15,
+                              gap: { xs: 0.5, sm: 1, md: 2 }, // Smaller gap on mobile
                               alignItems: "center",
                             }}
                           >
-                            <img
+                            {/* SMALLER IMAGE ON MOBILE */}
+                            <Box
+                              component="img"
                               src={row.image}
                               alt={row.name}
-                              height={50}
-                              style={{ marginBottom: 10 }}
+                              sx={{
+                                width: { xs: "28px", sm: "40px", md: "50px" }, // 28px on mobile!
+                                height: { xs: "28px", sm: "40px", md: "50px" },
+                                objectFit: "contain",
+                              }}
                             />
-                            <div
-                              style={{
+                            <Box
+                              sx={{
                                 display: "flex",
                                 flexDirection: "column",
                               }}
                             >
-                              <span
-                                style={{
+                              {/* SMALLER SYMBOL TEXT ON MOBILE */}
+                              <Box
+                                component="span"
+                                sx={{
                                   textTransform: "uppercase",
-                                  fontSize: 22,
+                                  fontSize: {
+                                    xs: "0.75rem",
+                                    sm: "1rem",
+                                    md: "1.375rem",
+                                  }, // 12px on mobile!
+                                  fontWeight: 500,
                                 }}
                               >
                                 {row.symbol}
-                              </span>
-                              <span style={{ color: "darkgray" }}>
+                              </Box>
+                              {/* Hide full name on mobile */}
+                              <Box
+                                component="span"
+                                sx={{
+                                  color: "darkgray",
+                                  fontSize: {
+                                    xs: "0.65rem",
+                                    sm: "0.75rem",
+                                    md: "0.875rem",
+                                  },
+                                  display: { xs: "none", sm: "block" },
+                                }}
+                              >
                                 {row.name}
-                              </span>
-                            </div>
-                          </div>
+                              </Box>
+                            </Box>
+                          </Box>
                         </TableCell>
+
+                        {/* Price Cell */}
                         <TableCell
                           align="right"
-                          style={{
+                          sx={{
                             fontWeight: 600,
                             fontFamily: "Montserrat, sans-serif",
+                            fontSize: {
+                              xs: "0.7rem",
+                              sm: "0.85rem",
+                              md: "1rem",
+                            }, // Smaller on mobile
+                            padding: {
+                              xs: "6px 4px",
+                              sm: "10px 12px",
+                              md: "16px",
+                            },
                           }}
                         >
-                          {currentSymbol} {""}
+                          <Box
+                            component="span"
+                            sx={{ display: { xs: "none", sm: "inline" } }}
+                          >
+                            {currentSymbol}{" "}
+                          </Box>
                           {addCommas(row.current_price.toFixed(2))}
                         </TableCell>
+
+                        {/* 24h Change Cell */}
                         <TableCell
                           align="right"
-                          style={{
+                          sx={{
                             color: profit ? "rgb(14,203,129)" : "red",
                             fontWeight: 600,
                             fontFamily: "Montserrat, sans-serif",
+                            fontSize: {
+                              xs: "0.7rem",
+                              sm: "0.85rem",
+                              md: "1rem",
+                            }, // Smaller on mobile
+                            padding: {
+                              xs: "6px 4px",
+                              sm: "10px 12px",
+                              md: "16px",
+                            },
                           }}
                         >
                           {profit && "+"}
                           {row.price_change_percentage_24h.toFixed(2)}%
                         </TableCell>
+
+                        {/* Market Cap Cell - Hidden on mobile */}
                         <TableCell
                           align="right"
-                          style={{
+                          sx={{
                             fontFamily: "Montserrat, sans-serif",
                             fontWeight: 600,
+                            fontSize: {
+                              xs: "0.7rem",
+                              sm: "0.85rem",
+                              md: "1rem",
+                            },
+                            padding: {
+                              xs: "6px 4px",
+                              sm: "10px 12px",
+                              md: "16px",
+                            },
+                            display: { xs: "none", sm: "table-cell" },
                           }}
                         >
-                          {currentSymbol} {""}
+                          {currentSymbol}{" "}
                           {addCommas(row.market_cap.toString().slice(0, -6))} M
                         </TableCell>
                       </TableRow>
@@ -194,15 +299,21 @@ function CoinsTabel() {
             </Table>
           )}
         </TableContainer>
+
         <Pagination
-          style={{
-            padding: 20,
+          sx={{
+            padding: { xs: 1.5, sm: 2.5 },
             width: "100%",
             display: "flex",
             justifyContent: "center",
+            "& .MuiPaginationItem-root": {
+              fontSize: { xs: "0.7rem", sm: "0.85rem" }, // Smaller pagination
+              minWidth: { xs: "28px", sm: "32px" },
+              height: { xs: "28px", sm: "32px" },
+            },
           }}
           classes={{ ul: classes.pagination }}
-          count={(handleSearch()?.length / 10).toFixed(0)}
+          count={Math.ceil(handleSearch()?.length / 10)}
           onChange={(_, value) => {
             setPage(value);
             window.scroll(0, 450);
@@ -212,4 +323,5 @@ function CoinsTabel() {
     </ThemeProvider>
   );
 }
+
 export default CoinsTabel;

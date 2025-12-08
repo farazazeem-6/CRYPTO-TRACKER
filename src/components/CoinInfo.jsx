@@ -91,6 +91,7 @@ function CoinInfo({ coin }) {
               marginTop: 20,
               justifyContent: "space-around",
               width: "100%",
+              gap: 10,
             }}
           >
             {chartDays.map((day) => (

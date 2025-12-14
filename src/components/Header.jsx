@@ -25,7 +25,6 @@ const useStyles = makeStyles(() => ({
 function Header() {
   const navigate = useNavigate();
   const classes = useStyles();
-  // const [input, setInput] = useState("PKR");
   const currency = useSelector((state) => state.currency.currency);
   const dispatch = useDispatch();
 
@@ -57,6 +56,7 @@ function Header() {
                 value={currency}
                 onChange={(e) => dispatch(setCurrency(e.target.value))}
                 variant="outlined"
+                
                 sx={{
                   width: 100,
                   height: 40,

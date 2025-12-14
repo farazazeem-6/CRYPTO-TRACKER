@@ -72,7 +72,7 @@ function CoinsTabel() {
           sx={{
             margin: { xs: "12px", sm: "18px" },
             fontFamily: "Montserrat, sans-serif",
-            fontSize: { xs: "1.25rem", sm: "1.75rem", md: "2.125rem" }, // Smaller on mobile
+            fontSize: { xs: "1.25rem", sm: "1.75rem", md: "2.125rem" }, 
           }}
         >
           Cryptocurrency Prices by Market Cap
@@ -87,10 +87,10 @@ function CoinsTabel() {
             marginBottom: 2,
             width: "100%",
             "& .MuiOutlinedInput-root": {
-              fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1rem" }, // Smaller on mobile
+              fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1rem" }, 
             },
             "& .MuiInputLabel-root": {
-              fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1rem" }, // Smaller label
+              fontSize: { xs: "0.8rem", sm: "0.9rem", md: "1rem" }, 
             },
           }}
         />
@@ -122,8 +122,8 @@ function CoinsTabel() {
                         color: "black",
                         fontWeight: 700,
                         fontFamily: "Montserrat, sans-serif",
-                        fontSize: { xs: "0.65rem", sm: "0.8rem", md: "1rem" }, // Much smaller on mobile
-                        padding: { xs: "6px 4px", sm: "10px 12px", md: "16px" }, // Tighter padding
+                        fontSize: { xs: "0.65rem", sm: "0.8rem", md: "1rem" }, 
+                        padding: { xs: "6px 4px", sm: "10px 12px", md: "16px" }, 
                         display:
                           head === "Market Cap"
                             ? { xs: "none", sm: "table-cell" }
@@ -165,7 +165,7 @@ function CoinsTabel() {
                           <Box
                             sx={{
                               display: "flex",
-                              gap: { xs: 0.5, sm: 1, md: 2 }, // Smaller gap on mobile
+                              gap: { xs: 0.5, sm: 1, md: 2 }, 
                               alignItems: "center",
                             }}
                           >
@@ -175,7 +175,7 @@ function CoinsTabel() {
                               src={row.image}
                               alt={row.name}
                               sx={{
-                                width: { xs: "28px", sm: "40px", md: "50px" }, // 28px on mobile!
+                                width: { xs: "28px", sm: "40px", md: "50px" }, 
                                 height: { xs: "28px", sm: "40px", md: "50px" },
                                 objectFit: "contain",
                               }}

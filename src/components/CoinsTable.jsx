@@ -36,7 +36,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function CoinsTabel() {
+function CoinsTable() {
   const currentCurrency = useSelector((state) => state.currency.currency);
   const currentSymbol = useSelector((state) => state.currency.symbol);
   const { loading } = useFetchAllCoins(currentCurrency);
@@ -324,4 +324,4 @@ function CoinsTabel() {
   );
 }
 
-export default CoinsTabel;
+export default CoinsTable;

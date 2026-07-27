@@ -49,7 +49,7 @@ src
 ├── components
 │   ├── Banner/         # Home page banner + trending coins carousel
 │   ├── CoinInfo.jsx     # Historical price chart + timeframe selector
-│   ├── CoinsTabel.jsx   # Market cap table with search & pagination
+│   ├── CoinsTable.jsx   # Market cap table with search & pagination
 │   ├── Header.jsx       # App bar with currency selector
 │   └── SelectedButton.jsx
 ├── constants/           # API endpoints & static UI copy
